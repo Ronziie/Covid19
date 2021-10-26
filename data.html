@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <title>Coronavirus App</title>
+</head>
+<body>
+<!-- ===Header=== -->
+    <header>
+        <!--Navigation-->
+        <nav class="navbar">
+            <div class="brand-title">NEWS FEED</div>
+            <a href="#" class="toggle-button">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </a>
+            <div class="navbar-links">
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="/symptoms.html">Symptoms</a></li>
+                <li><a href="/vaccination.html">Vaccination</a></li>
+                <li><a href="/testing.html">Testing</a></li>
+                <li><a href="#">Data</a></li>
+                
+              </ul>
+            </div>
+          </nav>
+          <!--End of Navigation-->
+
+    </header>
+<!-- ===Header=== -->
+<section>
+    <div id="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-center text-dark">Covid Data</h2>
+                    <hr>
+                    <!---<h1 id="header">type something</h1>
+                    <input type="text" id="inp"/>
+                    <button onClick="pressed()">Click</button>
+                    <p id="output"></p>-->
+                    <div class="stat-box">
+                            <h3>Active cases per continent</h3>
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                 <div class="col-md-7">
+                                     <canvas id="chartjs_bar" ></canvas>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                     
+                    </div>
+                    <div class="stat-box">
+                            <h3>Death cases per continent</h3>
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                 <div class="col-md-7">
+                                     <canvas id="chartjs_bar1" ></canvas>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                     
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"></script>
+    
+    <script>
+    getdata();
+    
+    function getdata() 
+    {
+        $.ajax({
+            type: "GET",
+            url: "https://corona.lmao.ninja/v2/continents?today=true",
+            // dataType: "json",
+            success: function(response) 
+            { 
+                var string1 = JSON.stringify(response);
+                var responseData = JSON.parse(string1);
+                var responseCount = responseData.length;
+     
+                if (responseCount > 0) {
+                    get_chart_active(responseData);
+                    get_chart_death(responseData);
+                }
+            }
+        });
+    }
+    
+    function get_chart_active(responseData)
+    {
+     var ctx     = document.getElementById("chartjs_bar").getContext('2d');
+        var myChart = new Chart(ctx, {
+                                type: 'bar',
+                                
+                                data: {
+                                    labels:["Asia", "Europe", "Africa", "Australia", "North America", "South America" ],
+                                    datasets: [{
+                                        
+                                        label: "Active Cases",
+                
+                                        backgroundColor: [
+                                           "#012c68",
+                                            "#012c68",
+                                            "#012c68",
+                                            "#012c68",
+                                            "#012c68",
+                                            "#012c68"
+                                            
+                                        ],
+                                        data:[responseData[1].active,responseData[3].active,responseData[4].active,responseData[5].active,responseData[0].active,responseData[2].active],
+                                    }]
+                                },
+                                options: {
+                                    
+                                  plugins:
+                                  {
+                                       legend: {
+                                            display: true,
+                                            position: 'left',
+                                
+                                            labels: {
+                                                fontColor: '#71748d',
+                                                fontFamily: 'Corbel',
+                                                fontSize: 14,
+                                            }
+                                        }
+                                  }
+                                }
+                        });
+        }
+    function get_chart_death(responseData)
+    {
+     var ctx     = document.getElementById("chartjs_bar1").getContext('2d');
+        var myChart = new Chart(ctx, {
+                                type: 'bar',
+                                
+                                data: {
+                                    labels:["Asia", "Europe", "Africa", "Australia", "North America", "South America" ],
+                                    datasets: [{
+                                        
+                                        label: "Death Cases",
+                
+                                        backgroundColor: [
+                                           "#012c68",
+                                            "#012c68",
+                                            "#012c68",
+                                            "#012c68",
+                                            "#012c68",
+                                            "#012c68"
+                                            
+                                        ],
+                                        data:[responseData[1].deaths,responseData[3].deaths,responseData[4].deaths,responseData[5].deaths,responseData[0].deaths,responseData[2].deaths],
+                                    }]
+                                },
+                                options: {
+                                    
+                                  plugins:
+                                  {
+                                       legend: {
+                                            display: true,
+                                            position: 'left',
+                                
+                                            labels: {
+                                                fontColor: '#71748d',
+                                                fontFamily: 'Corbel',
+                                                fontSize: 14,
+                                            }
+                                        }
+                                  }
+                                }
+                        });
+        }
+    
+        function pressed(){
+            let text = document.getElementById("inp").value;
+            output.innerHTML = text.endsWith("E");
+        }
+      
+    </script>
+</section>
+
+<!-- ===Footer=== -->
+<footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+                <div class="col-lg-2 col-md-6 footer-links">
+                    <h3>Useful Links</h3>
+                    <ul>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="container">
+                    <div class="copyright">
+                        &copy; Copyright <strong><span>RD</span></strong>. All Rights Reserved
+                    </div>
+                </div>
+        </div>
+     </div>
+    </div>
+
+</footer>
+<!-- ===End Footer=== -->
+</body>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<script src="/javascript.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,309 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif; 
+    color: black;
+}
+/* -----Navigation----- */
+.navbar {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    background-color:rgb(60, 218, 191);
+    color: white;
+}
+
+.brand-title {
+    font-size: 1.5rem;
+    margin: .5rem;
+    color: black;
+}
+
+.navbar-links {
+    height: 100%;
+}
+
+.navbar-links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    list-style: none;
+}
+
+.navbar-links li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+}
+
+.navbar-links li:hover {
+    background-color: rgb(60, 38, 185);
+    border-radius: 20px;
+}
+
+.toggle-button {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links ul li {
+        text-align: center;
+    }
+
+    .navbar-links ul li a {
+        padding: .5rem 1rem;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+}
+/*----End of Navigation----*/
+
+/*---Header index----*/
+.header-img {
+    width: 100%;
+    height: 350px;
+    background: url('https://cdn.cfr.org/sites/default/files/styles/immersive_image_3_2_desktop_2x/public/image/2020/02/VirusBackrounderLead.jpg');
+    background-size: contain;
+    margin-top: 5px;
+}
+/*---About Covid----*/
+
+.covid-text {
+    border-color: black;
+    border-style: solid;
+}
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    right: 15px;
+    bottom: 15px;
+    z-index: 996;
+    background: #2487ce;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    transition: all 0.4s;
+  }
+  
+  .back-to-top i {
+    font-size: 28px;
+    color: #fff;
+    line-height: 0;
+  }
+  
+  .back-to-top:hover {
+    background: #3e9bdd;
+    color: #fff;
+  }
+  
+  .back-to-top.active {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  
+  
+
+/*---End of Index----*/
+
+/*-------------------
+------Symptoms Page---
+---------------------*/
+.symptoms-container {
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.symptomsImg {
+    background: url('https://ichef.bbci.co.uk/news/800/cpsprodpb/931B/production/_111195673_corona_whatyouneedtodo_without_title-nc.png');
+    height: 549px;
+    max-width: 976px;
+    margin: auto;
+    border-radius: 10px;
+}
+.symptomsimg2 {
+    background: url('https://ichef.bbci.co.uk/news/800/cpsprodpb/73C1/production/_112333692_coronavirus_key_symptoms_uk_v2_640-nc.png');
+    height: 500px;
+    width: 520px;
+    margin: auto;
+    border-radius: 10px;
+}
+.symptomstext {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    text-align: justify;
+    justify-content: inter-word;
+}
+.symptomsimg3 {
+    background: url('https://ichef.bbci.co.uk/news/800/cpsprodpb/E79E/production/_111449295_temperature_checkv2_640-nc.png');
+    height: 840px;
+    width: 876px;
+    margin: auto;
+    border-radius: 10px;
+}
+h4 {
+    text-align: center;
+}
+.symptomsimg4 {
+    background: url('https://ichef.bbci.co.uk/news/976/cpsprodpb/120FC/production/_114408937_symptomchart.png');
+    height: 1700px;
+    width: 970px;
+    margin: auto;
+    border-radius: 10px;
+}
+h5 {
+    margin-left: 20%;
+    margin-right: 20%;
+
+}
+.symptomsimg5 {
+    background: url('https://ichef.bbci.co.uk/news/976/cpsprodpb/DD3B/production/_113753665_self_isolation_timetable_v4_640-nc.png');
+    height: 980px;
+    width: 640px;
+    margin: auto;
+    border-radius: 10px;
+}
+.symptomsimg6 {
+    background: url('https://ichef.bbci.co.uk/news/800/cpsprodpb/17E2F/production/_111093879_cough_etiquette_640_3x-nc.png');
+    height: 1350px;
+    width: 976px;
+    margin: auto;
+    border-radius: 10px;
+}
+/*-------------------
+-----End of Symptoms--
+-----------------*/
+
+/*---Testing ---*/
+
+.Test-box1 {
+    border-style: solid;
+    border-color: black;
+    padding: 30px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+   
+}
+.Test-box2 {
+    border-style: solid;
+    border-color:green;
+    padding: 30px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+.Test-box3 {
+    border-style: solid;
+    border-color:purple;
+    padding: 30px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+/*----End of Testing--*/
+/*----vaccination---*/
+
+.vac-card1 {
+    border-color: black;
+    border-style: solid;
+}
+
+
+/*----End of Vaccination--*/
+
+/*--- Footer ---- */
+#footer {
+    background: rgb(60, 218, 191);
+    color:black;
+    font-size: 14px;
+  }
+  
+  #footer .footer-top {
+    padding: 30px 0 30px 0;
+  }
+   
+  #footer .footer-top .social-links a {
+    font-size: 18px;
+    display: inline-block;
+    background: #2f4d5a;
+    color:black;
+  }
+
+  #footer .footer-top .footer-links {
+    margin-bottom: 30px;
+  }
+  
+  #footer .footer-top .footer-links ul li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+  }
+   
+  #footer .footer-top .footer-links ul a {
+    color:black;
+    transition: 0.3s;
+    display: inline-block;
+    line-height: 1;
+  }
+  
+  #footer .footer-top .footer-links ul a:hover {
+    color: #a2cfe3;
+  }
+  
+  #footer .copyright {
+    border-top: 1px solid #385b6b;
+    text-align: center;
+    padding-top: 30px;
+  }
+/*---Footer---*/
