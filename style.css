@@ -119,10 +119,13 @@ body {
 }
 /*--------------------------------------------------------------
 # Back to top button
---------------------------------------------------------------*/
+-----------------------*/
+
+
+
 .back-to-top {
     position: fixed;
-    visibility: hidden;
+    visibility:hidden;
     opacity: 0;
     right: 15px;
     bottom: 15px;
@@ -150,22 +153,29 @@ body {
     opacity: 1;
   }
   
-  
-  
+
+
+
+
+
+
+
+
 
 /*---End of Index----*/
 
 /*-------------------
 ------Symptoms Page---
 ---------------------*/
-.symptoms-container {
+/*.symptoms-container {
     margin-left: 5%;
     margin-top: 2%;
     margin-right: 5%;
     margin-bottom: 2%;
     text-align: justify;
     text-justify: inter-word;
-}
+} */
+
 
 .symptomsImg {
     background: url('https://ichef.bbci.co.uk/news/800/cpsprodpb/931B/production/_111195673_corona_whatyouneedtodo_without_title-nc.png');
@@ -173,6 +183,16 @@ body {
     max-width: 976px;
     margin: auto;
     border-radius: 10px;
+}
+@media (max-width: 700px) {
+    .symptomsImg .symptomsimg2 .symptomsimg3 .symptomsimg4 .symptomsimg6 {
+        width: 500px;
+        height: 300px;   
+    }
+    .symptomsimg5 {
+        width: 100px;
+        height: 300px;
+    } 
 }
 .symptomsimg2 {
     background: url('https://ichef.bbci.co.uk/news/800/cpsprodpb/73C1/production/_112333692_coronavirus_key_symptoms_uk_v2_640-nc.png');
